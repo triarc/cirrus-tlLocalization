@@ -1,0 +1,23 @@
+{
+  "name": "cirrus-tlLocalization",
+  "version": "0.0.1",
+  "authors": [
+    "Marco Bachmann <mb@triarc-labs.com>"
+  ],
+  "main": "tlLocalization.js",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "endpoint": "https://github.com/triarc/cirrus-tlLocalization.git",
+  "dependencies": {
+    "cirrus-tlDataServices": "~0.0.1"
+  }
+}
