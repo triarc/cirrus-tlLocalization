@@ -1,22 +1,5 @@
 declare var mod: ng.IModule;
 declare module Triarc.Localization {
-    class LocalizationController {
-        private $scope;
-        private $localization;
-        static controllerId: string;
-        static $inject: string[];
-        filter: string;
-        private maxLanguagesToSelect;
-        constructor($scope: ng.IScope, $localization: LocalizationService);
-        getFilteredEntries: () => Row[];
-        toggleLanguage: (language: ILanguage) => void;
-        addRow: () => void;
-        valueChange: (entry: ILocaleEntry, del: boolean) => void;
-        removeResource: (rowKey: string) => void;
-        save: () => void;
-    }
-}
-declare module Triarc.Localization {
     interface ILocalizationResource {
         getLocaleEntriesMultiple(params: IGetEntryParameters): ng.IPromise<Triarc.Data.DataResponse<ILocaleEntry[]>>;
         getResourceKeysMultiple(params: {}): ng.IPromise<Triarc.Data.DataResponse<string[]>>;
@@ -74,6 +57,23 @@ declare module Triarc.Localization {
         resource: string;
         $get: (string | (($q: ng.IQService, $proxy: any) => LocalizationService))[];
         static providerId: string;
+    }
+}
+declare module Triarc.Localization {
+    class LocalizationController {
+        private $scope;
+        private $localization;
+        static controllerId: string;
+        static $inject: string[];
+        filter: string;
+        private maxLanguagesToSelect;
+        constructor($scope: ng.IScope, $localization: LocalizationService);
+        getFilteredEntries: () => Row[];
+        toggleLanguage: (language: ILanguage) => void;
+        addRow: () => void;
+        valueChange: (entry: ILocaleEntry, del: boolean) => void;
+        removeResource: (rowKey: string) => void;
+        save: () => void;
     }
 }
 declare module Triarc.Localization {

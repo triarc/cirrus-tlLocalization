@@ -4,61 +4,6 @@ var Triarc;
 (function (Triarc) {
     var Localization;
     (function (Localization) {
-        var LocalizationController = (function () {
-            function LocalizationController($scope, $localization) {
-                var _this = this;
-                this.$scope = $scope;
-                this.$localization = $localization;
-                this.filter = "";
-                this.maxLanguagesToSelect = 2;
-                this.getFilteredEntries = function () {
-                    if (_this.filter === "") {
-                        return _this.$localization.rows;
-                    }
-                    return _this.$localization.rows.filter(function (row) {
-                        return (row.rowKey.toLowerCase().indexOf(_this.filter.toLowerCase()) > -1);
-                    });
-                };
-                this.toggleLanguage = function (language) {
-                    if (language.Selected) {
-                        _this.$localization.selectLanguage(language);
-                    }
-                    else {
-                        _this.$localization.deselectLanguage(language);
-                    }
-                };
-                this.addRow = function () {
-                    if (_this.$localization.newResource) {
-                        _this.$localization.addKey(_this.$localization.newResource);
-                        _this.$localization.newResource = "";
-                    }
-                };
-                this.valueChange = function (entry, del) {
-                    _this.$localization.updateEntry(entry, del);
-                };
-                this.removeResource = function (rowKey) {
-                    _this.$localization.removeRow(rowKey);
-                };
-                this.save = function () {
-                    _this.$localization.save();
-                };
-                if (!this.$localization.hasLoaded) {
-                    this.$localization.refresh();
-                }
-            }
-            LocalizationController.controllerId = "localizationController";
-            LocalizationController.$inject = ["$scope", Localization.LocalizationService.serviceId];
-            return LocalizationController;
-        })();
-        Localization.LocalizationController = LocalizationController;
-        mod.controller(LocalizationController.controllerId, LocalizationController);
-    })(Localization = Triarc.Localization || (Triarc.Localization = {}));
-})(Triarc || (Triarc = {}));
-/// <reference path="tllocalization.ts" />
-var Triarc;
-(function (Triarc) {
-    var Localization;
-    (function (Localization) {
         var Row = (function () {
             function Row(key) {
                 this.rowKey = key;
@@ -219,6 +164,62 @@ var Triarc;
         })();
         Localization.LocalizationServiceProvider = LocalizationServiceProvider;
         mod.provider(LocalizationService.serviceId, LocalizationServiceProvider);
+    })(Localization = Triarc.Localization || (Triarc.Localization = {}));
+})(Triarc || (Triarc = {}));
+/// <reference path="tllocalization.ts" />
+/// <reference path="localizationservice.ts" />
+var Triarc;
+(function (Triarc) {
+    var Localization;
+    (function (Localization) {
+        var LocalizationController = (function () {
+            function LocalizationController($scope, $localization) {
+                var _this = this;
+                this.$scope = $scope;
+                this.$localization = $localization;
+                this.filter = "";
+                this.maxLanguagesToSelect = 2;
+                this.getFilteredEntries = function () {
+                    if (_this.filter === "") {
+                        return _this.$localization.rows;
+                    }
+                    return _this.$localization.rows.filter(function (row) {
+                        return (row.rowKey.toLowerCase().indexOf(_this.filter.toLowerCase()) > -1);
+                    });
+                };
+                this.toggleLanguage = function (language) {
+                    if (language.Selected) {
+                        _this.$localization.selectLanguage(language);
+                    }
+                    else {
+                        _this.$localization.deselectLanguage(language);
+                    }
+                };
+                this.addRow = function () {
+                    if (_this.$localization.newResource) {
+                        _this.$localization.addKey(_this.$localization.newResource);
+                        _this.$localization.newResource = "";
+                    }
+                };
+                this.valueChange = function (entry, del) {
+                    _this.$localization.updateEntry(entry, del);
+                };
+                this.removeResource = function (rowKey) {
+                    _this.$localization.removeRow(rowKey);
+                };
+                this.save = function () {
+                    _this.$localization.save();
+                };
+                if (!this.$localization.hasLoaded) {
+                    this.$localization.refresh();
+                }
+            }
+            LocalizationController.controllerId = "localizationController";
+            LocalizationController.$inject = ["$scope", Localization.LocalizationService.serviceId];
+            return LocalizationController;
+        })();
+        Localization.LocalizationController = LocalizationController;
+        mod.controller(LocalizationController.controllerId, LocalizationController);
     })(Localization = Triarc.Localization || (Triarc.Localization = {}));
 })(Triarc || (Triarc = {}));
 /// <reference path="tllocalization.ts" />
