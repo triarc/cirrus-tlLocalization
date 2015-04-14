@@ -1,6 +1,6 @@
 {
   "name": "cirrus-tlLocalization",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "authors": [
     "Marco Bachmann <mb@triarc-labs.com>"
   ],
@@ -16,8 +16,11 @@
     "test",
     "tests"
   ],
+  "typescript": {
+    "definition": "tlLocalization.d.ts"
+  },
   "endpoint": "https://github.com/triarc/cirrus-tlLocalization.git",
   "dependencies": {
-    "cirrus-tlDataServices": "~0.0.5"
+    "cirrus-tlDataServices": "~0.0.6"
   }
 }
