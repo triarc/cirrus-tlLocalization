@@ -23,14 +23,12 @@ var Triarc;
                         response.data.forEach(function (l) {
                             _this.languages.push(l);
                         });
-                    }, function () {
-                    });
+                    }, function () { });
                     _this.resource.getResourceKeysMultiple({}).then(function (response) {
                         response.data.forEach(function (k) {
                             _this.rows.push(new Row(k));
                         });
-                    }, function () {
-                    });
+                    }, function () { });
                     _this.hasLoaded = true;
                 };
                 this.selectLanguage = function (language) {
@@ -101,8 +99,7 @@ var Triarc;
                     _this.resource.updateEntries({ UpdatedEntries: _this.entriesToUpdate, DeletedKeys: _this.keysToDelete }).then(function (response) {
                         _this.entriesToUpdate = [];
                         _this.keysToDelete = [];
-                    }, function () {
-                    });
+                    }, function () { });
                 };
                 this.loadLanguage = function (key) {
                     _this.resource.getLocaleEntriesMultiple({ languageKey: key }).then(function (response) {
@@ -120,8 +117,7 @@ var Triarc;
                             _this.rows[i].rowColumns.push(entry);
                             entry = null;
                         }
-                    }, function () {
-                    });
+                    }, function () { });
                 };
                 this.unloadLanguage = function (key) {
                     for (var i = 0; i < _this.rows.length; i++) {
@@ -153,8 +149,8 @@ var Triarc;
                 var _this = this;
                 this.resource = "Localization";
                 this.$get = ["$q", "$proxy", function ($q, $proxy) {
-                    return new LocalizationService($q, $proxy[_this.resource]);
-                }];
+                        return new LocalizationService($q, $proxy[_this.resource]);
+                    }];
             }
             LocalizationServiceProvider.prototype.setLocalizationResource = function (resourceName) {
                 this.resource = resourceName;

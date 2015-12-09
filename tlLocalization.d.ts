@@ -1,10 +1,10 @@
 declare var mod: ng.IModule;
 declare module Triarc.Localization {
     interface ILocalizationResource {
-        getLocaleEntriesMultiple(params: IGetEntryParameters): ng.IPromise<Triarc.Data.DataResponse<ILocaleEntry[]>>;
-        getResourceKeysMultiple(params: {}): ng.IPromise<Triarc.Data.DataResponse<string[]>>;
-        updateEntries(data: IUpdateParams): ng.IPromise<Triarc.Data.DataResponse<any>>;
-        getLanguagesMultiple: (params: {}) => ng.IPromise<Triarc.Data.DataResponse<ILanguage[]>>;
+        getLocaleEntriesMultiple(params: IGetEntryParameters): angular.IPromise<Triarc.Data.DataResponse<ILocaleEntry[]>>;
+        getResourceKeysMultiple(params: {}): angular.IPromise<Triarc.Data.DataResponse<string[]>>;
+        updateEntries(data: IUpdateParams): angular.IPromise<Triarc.Data.DataResponse<any>>;
+        getLanguagesMultiple: (params: {}) => angular.IPromise<Triarc.Data.DataResponse<ILanguage[]>>;
     }
     interface IUpdateParams {
         UpdatedEntries: ILocaleEntry[];
@@ -41,7 +41,7 @@ declare module Triarc.Localization {
         newResource: string;
         entriesToUpdate: ILocaleEntry[];
         keysToDelete: string[];
-        constructor($q: ng.IQService, resource: ILocalizationResource);
+        constructor($q: angular.IQService, resource: ILocalizationResource);
         refresh: () => void;
         selectLanguage: (language: ILanguage) => void;
         deselectLanguage: (language: ILanguage) => void;
@@ -52,7 +52,7 @@ declare module Triarc.Localization {
         private loadLanguage;
         private unloadLanguage;
     }
-    class LocalizationServiceProvider implements ng.IServiceProvider {
+    class LocalizationServiceProvider implements angular.IServiceProvider {
         setLocalizationResource(resourceName: string): void;
         resource: string;
         $get: (string | (($q: ng.IQService, $proxy: any) => LocalizationService))[];
@@ -67,7 +67,7 @@ declare module Triarc.Localization {
         static $inject: string[];
         filter: string;
         private maxLanguagesToSelect;
-        constructor($scope: ng.IScope, $localization: LocalizationService);
+        constructor($scope: angular.IScope, $localization: LocalizationService);
         getFilteredEntries: () => Row[];
         toggleLanguage: (language: ILanguage) => void;
         addRow: () => void;
@@ -77,7 +77,7 @@ declare module Triarc.Localization {
     }
 }
 declare module Triarc.Localization {
-    class LocalizationTable implements ng.IDirective {
+    class LocalizationTable implements angular.IDirective {
         static directiveId: string;
         constructor();
         restrict: string;
